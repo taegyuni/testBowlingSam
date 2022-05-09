@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
@@ -10,9 +10,10 @@ tools:context=".MainActivity">
     <FrameLayout
         android:id="@+id/fragments_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_above="@+id/bottom_nav"
-        android:layout_alignParentTop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         android:layout_centerHorizontal="true"
         android:background="#FFFFFF"/>
 
@@ -20,13 +21,12 @@ tools:context=".MainActivity">
         android:id="@+id/bottom_nav"
         app:menu="@menu/bottom_nav_menu"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="#ffffff"
         app:labelVisibilityMode="labeled"
         app:itemTextColor="@color/select"
         app:itemIconTint="@color/select"
          />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

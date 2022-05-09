@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 //홈 탭 클릭 시
                 R.id.menu_home -> {
                     homeFragment = HomeFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, homeFragment).addToBackStack(null).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, homeFragment).commit()
                     true
                 }
                 //촬영 탭 클릭 시
@@ -38,12 +38,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.menu_history -> {
                     historyFragment = HistoryFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, historyFragment).addToBackStack(null).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, historyFragment).commit()
                     true
                 }
                 R.id.menu_settings -> {
                     settingsFragment = SettingsFragment.newInstance()
-                    supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, settingsFragment).addToBackStack(null).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragments_frame, settingsFragment).commit()
                     true
                 }
                 else -> false
