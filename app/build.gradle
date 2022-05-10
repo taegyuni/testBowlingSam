@@ -75,6 +75,7 @@ dependencies {
     implementation "androidx.camera:camera-view:${camerax_version}"
     implementation "androidx.camera:camera-extensions:${camerax_version}"
 
-
+    //dot-indicator
+    implementation("com.tbuonomo:dotsindicator:4.3")
 
 }

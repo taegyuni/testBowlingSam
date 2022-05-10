@@ -105,6 +105,18 @@ class RecordFragment : Fragment() {
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        //에러 처리 -> 안 먹힘
+        /*
+        if(recording != null) {
+            recording?.close()
+            recording = null
+        }
+         */
+        cameraExecutor.shutdown()
+    }
+
     //영상 촬영과 영상 촬영 중단을 정의하는 함수
     private fun captureVideo(view: View) {
         val videoCapture = this.videoCapture ?: return
@@ -215,18 +227,6 @@ class RecordFragment : Fragment() {
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             safeContext, it) == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //에러 처리 -> 안 먹힘
-        /*
-        if(recording != null) {
-            recording?.close()
-            recording = null
-        }
-         */
-        cameraExecutor.shutdown()
     }
 
     //카메라 및 저장 권한 획득 여부에 따른 결과 처리 함수
