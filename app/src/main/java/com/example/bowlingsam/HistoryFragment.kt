@@ -30,14 +30,14 @@ class HistoryFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_history, container, false)
         val list_array = arrayListOf<Posture>(
-            Posture("posture", "자세1", "2022년 4월 22일", "정확도 91%"),
-            Posture("posture", "자세2", "2022년 4월 23일", "정확도 77%"),
-            Posture("posture", "자세3", "2022년 4월 24일", "정확도 80%"),
-            Posture("posture", "자세4", "2022년 4월 24일", "정확도 88%"),
-            Posture("posture", "자세99", "2022년 4월 27일", "정확도 90%"),
-            Posture("posture", "자세6", "2022년 4월 28일", "정확도 97%"),
-            Posture("posture", "자세7", "2022년 5월 1일", "정확도 33%"),
-            Posture("posture", "자세8", "2022년 5월 5일", "정확도 71%")
+            Posture("bowling", "자세1", "2022년 4월 22일", "정확도 91%"),
+            Posture("bowling", "자세2", "2022년 4월 23일", "정확도 77%"),
+            Posture("bowling", "자세3", "2022년 4월 24일", "정확도 80%"),
+            Posture("bowling", "자세4", "2022년 4월 24일", "정확도 88%"),
+            Posture("bowling", "자세5", "2022년 4월 27일", "정확도 90%"),
+            Posture("bowling", "자세6", "2022년 4월 28일", "정확도 97%"),
+            Posture("bowling", "자세7", "2022년 5월 1일", "정확도 33%"),
+            Posture("bowling", "자세8", "2022년 5월 5일", "정확도 71%")
         )
         val list_adapter = HistoryListAdapter(requireContext(), list_array)
         view.listview_history.adapter = list_adapter

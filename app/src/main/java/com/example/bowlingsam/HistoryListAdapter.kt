@@ -31,7 +31,8 @@ class HistoryListAdapter(val context: Context, val postureList: ArrayList<Postur
         }
 
         val item = postureList[position]
-
+        val resourceId = context.resources.getIdentifier(item.image, "drawable", context.packageName)
+        holder.view_image1?.setImageResource(resourceId)
         holder.view_text1?.text = item.posture
         holder.view_text2?.text = item.date
         holder.view_text3?.text = item.score
