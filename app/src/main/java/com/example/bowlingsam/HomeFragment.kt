@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
             var videoID: Int = it.videopath
             var title: String = it.text
 
-            postureVideoFragment = PostureVideoFragment.newInstance(videoID, title)
+            postureVideoFragment = PostureVideoFragment.newInstance(videoID, title, "설명 없음.\n")
             parentFragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left,R.anim.exit_to_right).add(R.id.fragments_frame, postureVideoFragment).commit()
         }
 

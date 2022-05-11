@@ -34,6 +34,7 @@
     </androidx.appcompat.widget.Toolbar>
 
     <FrameLayout
+        android:id="@+id/video_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +48,30 @@
             android:layout_gravity="center"
             />
     </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/video_frame"
+        app:layout_constraintBottom_toTopOf="@id/nextbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/description_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="볼을 투구하기 전 도움닫기 동작을 말한다.\n어드레스 위치는 파울선에서 자신의 평소 보폭으로 4보 반을 걸어간 자리이다.\n자세는 시선을 에이밍 스폿에 고정하고 무릎을 3~5도 구부립니다.\n공을 잡은 팔은 어깨로부터 90도를 유지해야 다음 동작으로 이어질 때 흔들림이 없습니다.\n투구 하지 않는 손은 공을 가볍게 받쳐줍니다.\n양발은 볼의 진행 방향으로 향하게 하고, 첫 스텝의 발이 10cm정도 앞에 놓아서 몸의 중심을 유지합니다.\n"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/nextbutton"
