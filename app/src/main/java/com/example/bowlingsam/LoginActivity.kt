@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity(){
@@ -14,5 +15,6 @@ class LoginActivity : AppCompatActivity(){
         login_btn.setOnClickListener{
             startActivity(nextIntent)
         }
+
     }
 }

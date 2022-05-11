@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-v24/button_shape_menu.xml" value="0.132" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-v24/checkbox_on_background.xml" value="0.1" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-v24/drawable_history_more.xml" value="0.132" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-v24/drawable_left_image_id.xml" value="0.1975" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-v24/drawable_left_image_passwd.xml" value="0.132" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-v24/drawable_right_image_menu.xml" value="0.132" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable-xxhdpi/favorite_list_selector.xml" value="0.1975" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable/checkbox_off_background.xml" value="0.1" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable/duration_capsule.xml" value="0.132" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable/history_icon.xml" value="0.132" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable/home_icon.xml" value="0.132" />
@@ -31,7 +35,8 @@
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_practice_list.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_record.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_settings.xml" value="0.16530797101449277" />
-        <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/history_list_item.xml" value="0.16530797101449277" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_signup.xml" value="0.17083333333333334" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/history_list_item.xml" value="0.25" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/layout_main.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/drawable/duration_capsule.xml" value="0.1615" />
