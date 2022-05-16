@@ -96,14 +96,6 @@
             android:layout_marginRight="56dp"
             />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:orientation="vertical">
         <TextView
             android:id="@+id/loginAnother"
             android:layout_width="match_parent"
@@ -115,7 +107,8 @@
             android:textStyle="bold"
             android:textSize="13dp"
             android:textAlignment="center"
-            android:layout_marginBottom="30dp">
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="40dp">
         </TextView>
 
         <Button
@@ -123,12 +116,11 @@
             android:textColor="@color/black"
             android:textSize="18sp"
 
-
             android:layout_width="300dp"
             android:layout_height="60dp"
-
             android:backgroundTint="@color/white">
-
         </Button>
+
     </LinearLayout>
+
 </LinearLayout>

@@ -21,8 +21,6 @@
         android:theme="@style/Theme.BowlingSam"
         android:hardwareAccelerated="true" >
         <activity
-            android:name=".MainActivity" />
-        <activity
             android:name=".OnBoardActivity"
             android:exported="true">
 
@@ -35,6 +33,12 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"/>
+        <activity
+            android:name=".MainActivity" />
     </application>
+
+
 
 </manifest>

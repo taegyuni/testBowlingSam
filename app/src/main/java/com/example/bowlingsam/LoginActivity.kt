@@ -11,10 +11,13 @@ class LoginActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val nextIntent = Intent(this,MainActivity::class.java)
-        login_btn.setOnClickListener{
+        val nextIntent = Intent(this, MainActivity::class.java)
+        login_btn.setOnClickListener {
             startActivity(nextIntent)
         }
-
+        val i = Intent(this, SignUpActivity::class.java)
+        signUp_btn.setOnClickListener {
+            startActivity(i)
+        }
     }
 }
