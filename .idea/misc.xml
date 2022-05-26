@@ -27,12 +27,15 @@
         <entry key="..\:/dev/BowlingSam/app/src/main/res/drawable/status_recent_progress.xml" value="0.132" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/activity_login.xml" value="0.21" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/activity_main.xml" value="0.16530797101449277" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/activity_my_info.xml" value="0.340625" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/activity_my_setting.xml" value="0.3260416666666667" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/activity_onboarding.xml" value="0.26197916666666665" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/background_progressbar.xml" value="0.26197916666666665" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/carousel_item.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/drawable_left_image_id.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/drawable_left_image_passwd.xml" value="0.16530797101449277" />
+        <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/example_dialog.xml" value="0.22780797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_grip.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_history.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/fragment_home.xml" value="0.21" />
@@ -45,6 +48,17 @@
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/layout_main.xml" value="0.16530797101449277" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/layout/onboarding_screen_layout.xml" value="0.26197916666666665" />
         <entry key="..\:/dev/BowlingSam/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17083333333333334" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/activity_login.xml" value="0.27445652173913043" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/activity_my_info.xml" value="0.22282608695652173" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/activity_my_setting.xml" value="0.22282608695652173" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/custom_dialog_age.xml" value="0.26902173913043476" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/custom_dialog_ballsize.xml" value="0.26902173913043476" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/custom_dialog_nickname.xml" value="0.26902173913043476" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/example_dialog.xml" value="0.22" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/fragment_history.xml" value="0.1656534954407295" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/fragment_history_detail.xml" value="0.1" />
+        <entry key="..\:/dev/TestBowlingSam/app/src/main/res/layout/fragment_settings.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/duration_capsule.xml" value="0.1615" />
         <entry key="app/src/main/res/drawable/history_icon.xml" value="0.1325" />
         <entry key="app/src/main/res/drawable/home_icon.xml" value="0.1615" />
