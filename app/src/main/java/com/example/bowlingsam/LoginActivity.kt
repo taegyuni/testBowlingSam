@@ -7,12 +7,10 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.bowlingsam.databinding.ActivityMainBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
@@ -20,9 +18,8 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_signup.*
 
 
 class LoginActivity : AppCompatActivity(){
@@ -30,6 +27,8 @@ class LoginActivity : AppCompatActivity(){
 
     //firebase Auth
     private lateinit var firebaseAuth: FirebaseAuth
+    //firestore
+    private lateinit var firestore : FirebaseFirestore
     //google client
     private lateinit var googleSignInClient: GoogleSignInClient
 
@@ -47,7 +46,7 @@ class LoginActivity : AppCompatActivity(){
 
         //Google 로그인 옵션 구성. requestIdToken 및 Email 요청
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken("78068865652-o0plo8bqrfo0saeluafqlru9qps7ikq4.apps.googleusercontent.com")
             //'R.string.default_web_client_id' 에는 본인의 클라이언트 아이디를 넣어주시면 됩니다.
             .requestEmail()
             .build()
@@ -76,16 +75,20 @@ class LoginActivity : AppCompatActivity(){
     // onStart. 유저가 앱에 이미 구글 로그인을 했는지 확인
     public override fun onStart() {
         super.onStart()
-        Toast.makeText(
-            baseContext, "자동 로그인 중",
-            Toast.LENGTH_LONG
-        ).show()
         val account = GoogleSignIn.getLastSignedInAccount(this)
         val currentUser = firebaseAuth.currentUser
         if(account!==null){ // 이미 로그인 되어있을시 바로 메인 액티비티로 이동
             toMainActivity(firebaseAuth.currentUser)
+            Toast.makeText(
+                baseContext, "자동 로그인 중",
+                Toast.LENGTH_LONG
+            ).show()
         } else if (currentUser !== null){
             moveMainPage(firebaseAuth?.currentUser)
+            Toast.makeText(
+                baseContext, "자동 로그인 중",
+                Toast.LENGTH_LONG
+            ).show()
         }
 
     } //onStart End
@@ -100,6 +103,19 @@ class LoginActivity : AppCompatActivity(){
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+
+                    //데이터 저장
+                    firebaseAuth = FirebaseAuth.getInstance()
+                    firestore = FirebaseFirestore.getInstance()
+                    val user = firebaseAuth.currentUser
+                    var userInfo =UsersData()
+
+                    userInfo.uid = user?.uid
+                    userInfo.userNickName = user?.displayName
+                    userInfo.userID = user?.email
+
+                    firestore?.collection("users")?.document(firebaseAuth?.uid.toString())?.set(userInfo)
+
                     Log.w("LoginActivity", "firebaseAuthWithGoogle 성공", task.exception)
                     toMainActivity(firebaseAuth?.currentUser)
                 } else {
@@ -121,6 +137,7 @@ class LoginActivity : AppCompatActivity(){
     // signIn
     private fun signIn_google() {
         val signInIntent = googleSignInClient!!.signInIntent
+
         startForResult.launch(signInIntent)
     }
 

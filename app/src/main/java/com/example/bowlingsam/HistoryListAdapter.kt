@@ -2,21 +2,34 @@ package com.example.bowlingsam
 
 import android.app.Dialog
 import android.content.Context
-import android.media.MediaPlayer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.*
+import com.google.android.material.tabs.TabLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.example_dialog.*
+import kotlinx.android.synthetic.main.fragment_history.*
+import kotlinx.android.synthetic.main.fragment_history.view.*
+import kotlinx.android.synthetic.main.history_list_item.view.*
 
-class HistoryListAdapter(val context: Context, val postureList: ArrayList<Posture>) : BaseAdapter() {
-    private lateinit var historyDetailFragment: HistoryDetailFragment
+class HistoryListAdapter(val context: Context, val VideoList: ArrayList<PostureListData>) : BaseAdapter() {
+
+    //firebase Auth
+    private lateinit var firebaseAuth: FirebaseAuth
+    //firebase firestore
+    private lateinit var firestore: FirebaseFirestore
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         /* LayoutInflater는 item을 Adapter에서 사용할 View로 부풀려주는(inflate) 역할을 한다. */
 
         val view : View
         val holder : ViewHolder
+        //파이어베이스 로드
+        firebaseAuth = FirebaseAuth.getInstance()
+        firestore = FirebaseFirestore.getInstance()
 
         if(convertView == null){
             view = LayoutInflater.from(context).inflate(R.layout.history_list_item, null)
@@ -32,17 +45,41 @@ class HistoryListAdapter(val context: Context, val postureList: ArrayList<Postur
             view = convertView
         }
 
-        val item = postureList[position]
+        val item = VideoList[position]
         val resourceId = context.resources.getIdentifier(item.image, "drawable", context.packageName)
-        holder.view_image1?.setImageResource(resourceId)
-        holder.view_text1?.text = item.posture
-        holder.view_text2?.text = item.date
-        holder.view_text3?.text = item.score
 
+        holder.view_image1?.setImageResource(resourceId)
+
+        holder.view_text1?.text = item.date
+        holder.view_text2?.text = item.score
+        holder.view_text3?.text = item.videoID
+
+        // favorite true인 경우
+        if(item.isFavorite){
+            view.checkbox_favorite.isChecked = true
+        }
+
+        // 하트 즐겨찾기 체크 박스 클릭시
+        view.checkbox_favorite.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                if(view.checkbox_favorite.isChecked){
+                    firestore.collection("videoList")
+                        .whereEqualTo("uid", firebaseAuth.uid).orderBy("date")
+                        .get()
+                        .addOnSuccessListener{
+
+                        }
+                }
+
+            }
+        })
+
+        
+        // 연습목록 리스트 클릭시
         view.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 val dialog = CustomDialog(context)
-                dialog.myDialog(item.posture)
+                dialog.myDialog(item.feedback)
             }
         })
 
@@ -54,7 +91,7 @@ class HistoryListAdapter(val context: Context, val postureList: ArrayList<Postur
     }
 
     override fun getItem(p0: Int): Any {
-        return postureList.get(p0)
+        return VideoList.get(p0)
     }
 
     override fun getItemId(p0: Int): Long {
@@ -62,7 +99,7 @@ class HistoryListAdapter(val context: Context, val postureList: ArrayList<Postur
     }
 
     override fun getCount(): Int {
-        return postureList.size
+        return VideoList.size
     }
 
     private class ViewHolder {
@@ -79,6 +116,9 @@ class CustomDialog(context: Context) {
 
     fun myDialog(posture : String){
         dialog.setContentView(R.layout.example_dialog)
+
+//        var path = Environment.getExternalStoragePublicDirectory(DIRECTORY_DCIM)
+//        dialog.dialog_video.setVideoPath(""+path + "/VID_2022_05_27_22_49_27_292.mp4")
         dialog.dialog_video.setVideoPath("android.resource://com.example.bowlingsam/"+ R.raw.sample1)
         dialog.dialog_video.setOnPreparedListener {
             val mediaController = MediaController(c)

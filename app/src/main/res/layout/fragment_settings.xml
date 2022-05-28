@@ -22,7 +22,7 @@
                 android:id="@+id/nickNameText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="밤톨이"
+                android:text=""
                 android:textStyle="bold"
                 android:textColor="?attr/titleTextColor"
                 android:textSize="20sp"
@@ -43,9 +43,10 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/ageText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="나이 : 21"
+                    android:text="나이 : "
                     android:textStyle="bold"
                     android:textColor="?attr/titleTextColor"
                     android:textSize="16sp"
@@ -53,9 +54,10 @@
 
                 </TextView>
                 <TextView
+                    android:id="@+id/ballsizeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="볼사이즈 : 12 lb"
+                    android:text="볼사이즈 :      "
                     android:textStyle="bold"
                     android:textColor="?attr/titleTextColor"
                     android:textSize="16sp"
@@ -69,9 +71,10 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/gradeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="등급 : 3"
+                    android:text="등급 : "
                     android:textStyle="bold"
                     android:textColor="?attr/titleTextColor"
                     android:textSize="16sp"
@@ -79,9 +82,10 @@
 
                 </TextView>
                 <TextView
+                    android:id="@+id/avgText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="평균 정확도 : 78%"
+                    android:text="평균 정확도 : "
                     android:textStyle="bold"
                     android:textColor="?attr/titleTextColor"
                     android:textSize="16sp"
@@ -172,7 +176,7 @@
 
         </TextView>
         <Button
-            android:id="@+id/mySetting_btn"
+            android:id="@+id/myMode_btn"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:text="모드 변경"
