@@ -45,7 +45,7 @@ class HistoryFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_history, container, false)
 
-        //문서 업데이트
+        //파이어베이스 초기화
         firebaseAuth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
 
@@ -140,6 +140,8 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 탭 이벤트
         view.tab.addOnTabSelectedListener( object: TabLayout.OnTabSelectedListener{
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
@@ -147,8 +149,120 @@ class HistoryFragment : Fragment() {
             }
             override fun onTabSelected(tab: TabLayout.Tab?){
                 when(tab!!.position){
-                    0 -> Toast.makeText(context, "잘했어", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
+                    0 -> {
+                        //파이어베이스 초기화
+                        firebaseAuth = FirebaseAuth.getInstance()
+                        firestore = FirebaseFirestore.getInstance()
+
+                        var sum : Int = 0
+                        var count : Int = 0
+                        var recentScore : Int = 0
+
+                        var VideoList = arrayListOf<PostureListData>()
+                        firestore.collection("videoList")
+                            .whereEqualTo("uid", firebaseAuth.uid).orderBy("date")
+                            .get()
+                            .addOnSuccessListener { result ->
+                                for(document in result){
+
+                                    // 평균 점수 불러오기
+                                    var a = document["score"].toString()
+                                    var c : Int = a.toInt()
+                                    sum += c
+                                    count++
+                                    recentScore = c
+
+                                    // 기록 불러오기
+                                    val date = document["date"]
+                                    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale("ko", "KR"))
+                                    val strDate = dateFormat.format(date).toString()
+                                    VideoList.add(PostureListData(
+                                        document["uid"].toString(),
+                                        document["videoID"].toString(),
+                                        "bowling",
+                                        strDate,
+                                        "정확도 "+ document["score"] +"%",
+                                        document["favorite"] as Boolean,
+                                        document["feedback"].toString()
+                                    )
+                                    )
+                                }
+                                //평균 계산 후 avg에 업데이트
+                                var avg : Int = sum/count
+                                var userInfo = UsersData()
+                                //평균으로 등급 부여
+                                var grade : Int = when(avg){
+                                    in 95 until 100 -> 1
+                                    in 85 until 94 -> 2
+                                    in 84 until 84 -> 3
+                                    in 65 until 74 -> 4
+                                    in 55 until 64 -> 5
+                                    in 45 until 54 -> 6
+                                    in 35 until 44 -> 7
+                                    in 25 until 34 -> 8
+                                    else -> 9
+                                }
+                                println(grade)
+                                userInfo.avg = avg
+                                userInfo.grade = grade
+                                userInfo.recentScore = recentScore
+                                firestore?.collection("users")?.document(firebaseAuth?.uid.toString())?.update("avg", userInfo.avg,"grade", userInfo.grade, "recentScore", userInfo.recentScore )
+
+
+                                //Adapter
+                                val list_adapter = HistoryListAdapter(requireContext(), VideoList)
+                                view.listview_history.adapter = list_adapter
+
+                            }
+                            .addOnFailureListener { exception ->
+
+                            }
+
+                        Toast.makeText(context, "잘했어", Toast.LENGTH_SHORT).show()
+                    }
+
+                    1 -> {
+                        //파이어베이스 초기화
+                        firebaseAuth = FirebaseAuth.getInstance()
+                        firestore = FirebaseFirestore.getInstance()
+
+
+                        var VideoList = arrayListOf<PostureListData>()
+                        firestore.collection("videoList")
+                            .whereEqualTo("uid", firebaseAuth.uid).orderBy("date")
+                            .get()
+                            .addOnSuccessListener { result ->
+                                for(document in result){
+
+                                    //선택된것만
+                                    if(document["favorite"] == true){
+                                        // 기록 불러오기
+                                        val date = document["date"]
+                                        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale("ko", "KR"))
+                                        val strDate = dateFormat.format(date).toString()
+                                        VideoList.add(PostureListData(
+                                            document["uid"].toString(),
+                                            document["videoID"].toString(),
+                                            "bowling",
+                                            strDate,
+                                            "정확도 "+ document["score"] +"%",
+                                            document["favorite"] as Boolean,
+                                            document["feedback"].toString()
+                                        )
+                                        )
+                                    }
+                                }
+
+                                //Adapter
+                                val list_adapter = HistoryListAdapter(requireContext(), VideoList)
+                                view.listview_history.adapter = list_adapter
+
+                            }
+                            .addOnFailureListener { exception ->
+
+                            }
+                        Toast.makeText(context, "no", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
 
