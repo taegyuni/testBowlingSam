@@ -38,6 +38,7 @@ class HistoryListAdapter(val context: Context, val VideoList: ArrayList<PostureL
             holder.view_text1 = view.findViewById(R.id.posture_number)
             holder.view_text2 = view.findViewById(R.id.date)
             holder.view_text3 = view.findViewById(R.id.correct_score)
+            holder.view_favorite = view.findViewById(R.id.checkbox_favorite)
 
             view.tag = holder
         } else {
@@ -49,14 +50,14 @@ class HistoryListAdapter(val context: Context, val VideoList: ArrayList<PostureL
         val resourceId = context.resources.getIdentifier(item.image, "drawable", context.packageName)
 
         holder.view_image1?.setImageResource(resourceId)
-
         holder.view_text1?.text = item.date
         holder.view_text2?.text = item.score
         holder.view_text3?.text = item.videoID
+        holder.view_favorite?.isChecked = item.isFavorite
 
-        // favorite true인 경우
-        if(item.isFavorite){
-            view.checkbox_favorite.isChecked = true
+        // 스위치 상태가 변할 때마다 이 여부를 해당 position의 아이템에 스위치 상태를 설정
+        holder.view_favorite?.setOnCheckedChangeListener { buttonView, isChecked ->
+            holder.view_favorite?.isChecked = isChecked
         }
 
         // 하트 즐겨찾기 체크 박스 클릭시
@@ -67,10 +68,9 @@ class HistoryListAdapter(val context: Context, val VideoList: ArrayList<PostureL
                         .whereEqualTo("uid", firebaseAuth.uid).orderBy("date")
                         .get()
                         .addOnSuccessListener{
-
+                            //videoID를 통해 구분해서 isFavorite 값 업데이트
                         }
                 }
-
             }
         })
 
@@ -107,6 +107,7 @@ class HistoryListAdapter(val context: Context, val VideoList: ArrayList<PostureL
         var view_text1 : TextView? = null
         var view_text2 : TextView? = null
         var view_text3 : TextView? = null
+        var view_favorite : CheckBox? = null
     }
 }
 

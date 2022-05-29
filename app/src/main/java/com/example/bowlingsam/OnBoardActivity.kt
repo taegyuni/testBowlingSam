@@ -40,21 +40,21 @@ class OnBoardActivity : AppCompatActivity() {
         loginOnboard = findViewById(R.id.onboard_login)
 
         val onBoardingData : MutableList<OnBoardingData> = ArrayList()
-        onBoardingData.add(OnBoardingData("팀원은 어디서 구하지?", "이번 학기에도 팀플이 있는 당신.. \n 아직도 팀원을 못 구했나요? \n 같이 수업을 듣는 사람이 없다고요?", R.drawable.ic_launcher_foreground, "조별과제 / 팀플"))
-        onBoardingData.add(OnBoardingData("원하는 팀원을 빠르게!", "같은 수업을 듣고 있는 사람을 찾아봐요! \n 게시판 별로 팀원을 찾을 수도 있고 \n 자기 자신을 어필할 수 있습니다!", R.drawable.ic_launcher_foreground, "팀원 찾기를 통해"))
-        onBoardingData.add(OnBoardingData("팀원을 구하세요!", "팀원들의 평가를 한 눈에 보고 \n 자신과 어울리는 팀원을 찾으세요! \n 팀플이 종료 되면 평가도 남길 수 있어요!", R.drawable.ic_launcher_foreground, "자신과 어울리는"))
-        onBoardingData.add(OnBoardingData("성공적인 팀플을 위하여", "더 이상 팀원 때문에 고민 하지 말고 \n TeamOne 어플을 통해 \n 손 쉽게 팀원을 구하세요!", R.drawable.ic_launcher_foreground, "A+를 위하여"))
+        onBoardingData.add(OnBoardingData("볼링 연습해볼까?", "집에서 무료하게 보내고있는 당신.. \n 볼링이 치고싶으신가요? \n ", R.drawable.ic_launcher_foreground, "볼링!"))
+        onBoardingData.add(OnBoardingData("어디서든 편하게!", "집에서 편하게 연습해봐요! \n 자세별로 코치해주고 \n 자신의 모습을 확인할 수 있어요!", R.drawable.ic_launcher_foreground, "볼링쌤을 통해"))
+        onBoardingData.add(OnBoardingData("볼링 연습해보세요!", "영상을 통해 배우고 \n 자세 분석으로 확인하고! \n 나의 등급과 점수를 알수 있어요!", R.drawable.ic_launcher_foreground, "볼링쌤과 함께"))
+        onBoardingData.add(OnBoardingData("퍼펙트 게임을 향하여", "완벽한 스트라이크를 위해 \n 볼링쌤으로 \n 볼링 연습해봐요!", R.drawable.ic_launcher_foreground, "터키를 목표로"))
 
         setOnBoardingViewPagerAdapter(onBoardingData)
 
         position = onBoardingViewPager!!.currentItem
 
-//        startOnboardBtn?.setOnClickListener {
-//            savePrefDate()
-//            val i = Intent(applicationContext, RegisterActivity::class.java)  //회원가입 화면으로 이동
-//            startActivity(i)
-//            finish()
-//        }
+        startOnboardBtn?.setOnClickListener {
+            savePrefDate()
+            val i = Intent(applicationContext, SignUpActivity::class.java)  //회원가입 화면으로 이동
+            startActivity(i)
+            finish()
+        }
 
         loginOnboard?.setOnClickListener {
             savePrefDate()

@@ -182,6 +182,11 @@ class SettingsFragment : Fragment() {
                 var videoList = VideoListData()
                 videoList.uid = firebaseAuth?.currentUser?.uid
 
+                // videoList.videoID = 비디오구분 아이디 String
+                // videoList.feedback = 피드백 내용 String
+                // videoList.score = 점수 Int
+
+
                 firestore?.collection("videoList").add(videoList)
 
             }

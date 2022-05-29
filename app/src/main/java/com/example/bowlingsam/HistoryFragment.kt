@@ -82,8 +82,14 @@ class HistoryFragment : Fragment() {
                         )
                     )
                 }
+                var avg = 0
                 //평균 계산 후 avg에 업데이트
-                var avg : Int = sum/count
+                if (count == 0){
+                    avg = 0
+                } else {
+                    avg = sum/count
+                }
+
                 var userInfo = UsersData()
                 //평균으로 등급 부여
                 var grade : Int = when(avg){
@@ -188,7 +194,13 @@ class HistoryFragment : Fragment() {
                                     )
                                 }
                                 //평균 계산 후 avg에 업데이트
-                                var avg : Int = sum/count
+                                var avg = 0
+                                if (count == 0){
+                                    avg = 0
+                                } else {
+                                    avg = sum/count
+                                }
+
                                 var userInfo = UsersData()
                                 //평균으로 등급 부여
                                 var grade : Int = when(avg){
